@@ -3,130 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGMAN | Number Plate Specialists</title>
+    <title>REGMAN | Premium Number Plate Specialist</title>
     <script>
+        // ==========================================
+        // CONFIGURATION: CHANGE YOUR PHONE NUMBER HERE
+        // ==========================================
         const WHATSAPP_NUMBER = "447545571000"; 
     </script>
     <style>
         :root {
-            --bg-black: #0a0a0a;
-            --bg-card: #121212;
+            --bg-deep: #060606;
+            --bg-surface: #111111;
+            --bg-card: #181818;
             --gold: #d4af37;
-            --gold-grad: linear-gradient(135deg, #f3e0aa 0%, #d4af37 50%, #aa7c11 100%);
-            --silver-grad: linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #707070 100%);
-            --text-light: #ffffff;
-            --text-muted: #a0a0a0;
+            --gold-grad: linear-gradient(135deg, #fff3d1 0%, #d4af37 50%, #9e7811 100%);
+            --silver-grad: linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #666666 100%);
+            --text-main: #ffffff;
+            --text-muted: #ababab;
+            --border-glow: rgba(214, 175, 55, 0.15);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
-        body { background-color: var(--bg-black); color: var(--text-light); line-height: 1.6; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        header { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(10,10,10,0.9); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-text { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; background: var(--silver-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
-        .logo-text span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        nav a { color: var(--text-light); text-decoration: none; margin-left: 20px; font-size: 0.9rem; text-transform: uppercase; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg-deep); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        .container { width: 92%; max-width: 1200px; margin: 0 auto; }
+
+        /* COMMERCIAL TRUST TICKER */
+        .trust-ticker { background: #000; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; text-align: center; }
+        .trust-flex { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .trust-item span { color: var(--gold); }
+
+        /* NAVIGATION */
+        header { padding: 20px 0; background: rgba(6,6,6,0.9); border-bottom: 1px solid rgba(255,255,255,0.03); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(15px); }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo { font-size: 1.6rem; font-weight: 900; letter-spacing: 3px; background: var(--silver-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
+        .brand-logo span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        nav a { color: var(--text-main); text-decoration: none; margin-left: 24px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
         nav a:hover { color: var(--gold); }
-        .hero { padding: 40px 0 60px 0; text-align: center; background: radial-gradient(circle at center, #1a1508 0%, var(--bg-black) 70%); }
-        .logo-box { max-width: 450px; margin: 0 auto 30px auto; padding: 15px; }
-        .logo-img { width: 100%; max-height: 120px; object-fit: contain; }
-        .hero h1 { font-size: 2.2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
-        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto; }
-        .preview-wrapper { max-width: 600px; margin: 40px auto 20px auto; background: #000; border: 1px solid rgba(214,175,55,0.3); border-radius: 12px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; z-index: 10; }
-        .preview-title { text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: var(--gold); margin-bottom: 15px; font-weight: 700; }
-        .plate-toggle-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-        .toggle-tab { background: #111; border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); padding: 8px 16px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; border-radius: 20px; cursor: pointer; }
-        .toggle-tab.active { background: var(--gold-grad); color: #000; border-color: transparent; }
-        .uk-plate-body { width: 100%; max-width: 520px; height: 110px; border-radius: 6px; margin: 0 auto 20px auto; border: 4px solid #000; display: flex; justify-content: center; align-items: center; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .uk-plate-body.style-rear { background-color: #ffcc00; }
-        .uk-plate-body.style-front { background-color: #f5f5f5; }
-        .plate-text { color: #111111; font-size: calc(1.8rem + 3vw); font-weight: 900; letter-spacing: 4px; text-transform: uppercase; text-shadow: 2px 2px 0px rgba(0,0,0,0.9); white-space: nowrap; }
-        @media(min-width: 580px) { .plate-text { font-size: 3.5rem; letter-spacing: 6px; } }
-        .builder-inputs { display: flex; flex-direction: column; gap: 15px; max-width: 450px; margin: 0 auto; }
-        @media(min-width: 480px) { .builder-inputs { flex-direction: row; } }
-        .plate-input { flex: 2; padding: 14px; border-radius: 6px; border: 1px solid rgba(214,175,55,0.4); background: #111; color: #fff; text-transform: uppercase; text-align: center; font-size: 1.1rem; font-weight: 700; position: relative; z-index: 20; }
-        .cta-button { display: inline-block; background: var(--gold-grad); color: #000; padding: 14px 25px; font-weight: 700; border-radius: 4px; text-transform: uppercase; border: none; cursor: pointer; white-space: nowrap; position: relative; z-index: 20; }
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50px; padding: 12px 24px; font-weight: 700; font-size: 0.9rem; z-index: 1000; text-decoration: none; text-transform: uppercase; border: 2px solid rgba(255,255,255,0.2); }
-        .services-bar { background: #000; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .services-grid { display: flex; justify-content: space-around; text-align: center; }
-        .service-item { font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 1rem; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .products { padding: 60px 0; }
-        .section-title { text-align: center; font-size: 1.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
-        .section-title span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
-        .card { background-color: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 35px 20px; text-align: center; }
-        .card-badge { display: inline-block; border: 1px solid var(--gold); padding: 5px 15px; border-radius: 4px; font-weight: 700; color: var(--gold); margin-bottom: 15px; }
-        .card h3 { font-size: 1.3rem; text-transform: uppercase; margin-bottom: 10px; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
-        .faq-section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-        .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-        .faq-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.03); border-left: 3px solid var(--gold); padding: 25px; border-radius: 4px; }
-        .faq-item h4 { font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px; }
-        .faq-item p { color: var(--text-muted); font-size: 0.95rem; }
-        footer { background-color: #000; padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: var(--text-muted); }
-    </style>
-</head>
-<body>
 
-    <a href="#" class="whatsapp-float" onclick="sendWhatsAppMessage(event)">Chat</a>
+        /* HERO AREA & BUILDER WORKSPACE */
+        .hero { padding: 50px 0 80px 0; text-align: center; background: radial-gradient(circle at center, #1c1607 0%, var(--bg-deep) 75%); }
+        .tagline { display: inline-block; border: 1px solid var(--gold); padding: 6px 16px; border-radius: 30px; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; background: rgba(214,175,55,0.05); }
+        .hero h1 { font-size: calc(2rem + 1.5vw); font-weight: 900; text-transform: uppercase; letter-spacing: 2px; line-height: 1.2; margin-bottom: 20px; }
+        .hero h1 span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); max-width: 650px; margin: 0 auto 40px auto; font-size: 1.05rem; }
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo-text">REG<span>MAN</span></div>
-            <nav>
-                <a href="#styles">Styles</a>
-                <a href="#faq">Legality</a>
-            </nav>
-        </div>
-    </header>
+        /* THE LIVE INTERACTIVE BUILDER BOX */
+        .builder-workspace { max-width: 700px; margin: 0 auto; background: var(--bg-surface); border: 1px solid var(--border-glow); border-radius: 16px; padding: 30px 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+        .workspace-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; color: var(--gold); margin-bottom: 25px; }
+        
+        .control-group-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; text-align: left; padding-left: 5px; }
+        .builder-row { display: flex; gap: 12px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+        
+        .tab-btn { background: #222; border: 1px solid rgba(255,255,255,0.08); color: var(--text-muted); padding: 10px 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; }
+        .tab-btn.active { background: var(--gold-grad); color: #000; border-color: transparent; font-weight: 800; box-shadow: 0 4px 15px rgba(214,175,55,0.25); }
 
-    <section class="hero">
-        <div class="container">
-            <div class="logo-box">
-                <!-- This links to your logo graphic file inside Working Copy -->
-                <img src="logo.png" alt="REGMAN Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
-                <div id="fallback-logo" style="display:none;">
-                    <div style="font-size:3rem; font-weight:900; letter-spacing:4px; background:var(--silver-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">REGMAN</div>
-                    <div style="color:var(--gold); letter-spacing:2px; font-size:0.8rem; font-weight:600;">NUMBER PLATE SPECIALISTS</div>
-                </div>
-            </div>
-            
-            <h1>Premium Custom Plates</h1>
-            <p>Upgrade your vehicle's look with our bespoke premium number plates. Certified manufacturer focusing on design, supply, and perfect fitment.</p>
+        /* HIGH FIDELITY UK PLATE CANVAS */
+        .plate-viewport { background: #000; border-radius: 8px; padding: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.03); }
+        .uk-plate { width: 100%; max-width: 520px; height: 115px; border-radius: 6px; margin: 0 auto; border: 4.5px solid #000; display: flex; justify-content: center; align-items: center; position: relative; box-shadow: inset 0 0 12px rgba(0,0,0,0.25), 0 8px 25px rgba(0,0,0,0.5); transition: background 0.3s; }
+        .uk-plate.rear-view { background: #ffcc00; }
+        .uk-plate.front-view { background: #f8f8f8; }
+        .uk-plate::after { content: ''; position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px; border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; pointer-events: none; }
+        
+        .plate-text-rendering { color: #111; font-family: 'Arial Black', -apple-system, sans-serif; font-size: calc(2rem + 3vw); font-weight: 900; letter-spacing: 5px; text-transform: uppercase; white-space: nowrap; transition: all 0.2s; }
+        
+        /* TEXT RENDERING VARIATIONS */
+        .text-style-printed { text-shadow: 1px 1px 0px rgba(0,0,0,0.15); }
+        .text-style-3d { text-shadow: 2px 2px 0px rgba(0,0,0,0.7), 3px 3px 4px rgba(0,0,0,0.3); }
+        .text-style-4d { text-shadow: 0px 3px 0px #000, 3px 5px 0px #000, 4px 7px 8px rgba(0,0,0,0.5); }
 
-            <div class="preview-wrapper">
-                <div class="preview-title">Live Plate Preview</div>
-                <div class="plate-toggle-tabs">
-                    <button type="button" class="toggle-tab" onclick="setPlateStyle('front')">Front Plate</button>
-                    <button type="button" class="toggle-tab active" onclick="setPlateStyle('rear')">Rear Plate</button>
-                </div>
-                <div class="uk-plate-body style-rear" id="plateBox">
-                    <div class="plate-text" id="plateDisplay">REG MAN</div>
-                </div>
-                <div class="builder-inputs">
-                    <input type="text" class="plate-input" id="plateInput" placeholder="ENTER REG" maxlength="8">
-                    <button type="button" class="cta-button" onclick="sendWhatsAppMessage(event)">Order via WhatsApp</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        @media(min-width: 580px) { .plate-text-rendering { font-size: 3.6rem; letter-spacing: 6px; } }
 
-    <div class="services-bar">
-        <div class="container services-grid">
-            <div class="service-item">DESIGN</div>
-            <div class="service-item">SUPPLY</div>
-            <div class="service-item">FIT</div>
-        </div>
-    </div>
+        /* INPUT CONFIGURATORS */
+        .input-box-flex { display: flex; flex-direction: column; gap: 15px; max-width: 520px; margin: 0 auto; }
+        @media(min-width: 500px) { .input-box-flex { flex-direction: row; } }
+        .main-reg-field { flex: 2; padding: 16px; border-radius: 6px; border: 1px solid rgba(214,175,55,0.3); background: #0c0c0c; color: #fff; text-transform: uppercase; text-align: center; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; }
+        .main-reg-field:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 15px rgba(214,175,55,0.2); }
+        .action-submit-btn { display: inline-block; background: var(--gold-grad); color: #000; padding: 16px 30px; font-weight: 800; border-radius: 4px; text-transform: uppercase; border: none; cursor: pointer; font-size: 0.95rem; letter-spacing: 1px; box-shadow: 0 5px 20px rgba(214,175,55,0.3); white-space: nowrap; }
 
-    <section class="products" id="styles">
-        <div class="container">
-            <h2 class="section-title">Our Premium <span>Options</span></h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-badge">3D</div>
-                    <h3>3D Plates</h3>
-                    <p>High-quality raised polyurethane gel characters for a sleek, rounded premium finish.</p>
-                </div>
-                <div class="card">
-                    <div class="card-badge">4D</div>
-                    <h3>4D Plates</h3>
+        /* PROCESS WORKFLOW */
+        .workflow { padding: 80px 0; background: var(--bg-surface); border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .section-header { text-align: center; font-size: 1.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 50px; }
+        .section-header span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .step-card { background: var(--bg-card); padding: 40px 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.02); position: relative; }
+        .step-num { font-size: 0.85rem; font-weight: 800; color: var(--gold); letter-spacing: 2px; margin-bottom: 15px; display: block; }
+        .step-card h3 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
+        .step-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* PREMIUM CATALOG SHOWCASE */
+        .showcase { padding: 80px 0; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .product-card { background: var(--bg-surface); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 35px 25px; text-align: center; transition: all 0.3s; }
+        .product-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .product-badge { display: inline-block; border: 1px solid var(--gold); padding: 4px 14px; border-radius: 4px; font-weight: 800; font-size: 0.7rem; color: var(--gold); letter-spacing: 1.5px; margin-bottom: 15px; text-transform: uppercase; }
+        .product-card h3 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 10px; }
+        .product-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* LEGAL STANDARDS & ACCORDIONS */
+        .legal { padding: 80px 0; background: var(--bg-surface); border-top: 1px solid rgba(255,255,255,0.03); }
+        .legal-stack { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .legal-item { background: var(--bg-card); padding: 30px; border-radius: 6px; border-left: 4px solid var(--gold); }
+        .legal-item h4 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: 700; }
+        .legal-item p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* BRAND LOGO ELEMENT BOX */
+        .brand-logo-frame { max-width: 450px; margin: 0 auto 25px auto; padding: 10px; }
+        .brand-logo-asset { width: 100%; max-height: 110px; object-fit: contain; }
+
+        /* FOOTER */
+        footer { background: #000; padding: 40px 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); }
+        
+        /* FLOATING RESPONSIVE SUPPORT */
