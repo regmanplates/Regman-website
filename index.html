@@ -5,100 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REGMAN | Number Plate Specialists</title>
     <script>
-        const WHATSAPP_NUMBER = "447000000000"; 
+        const WHATSAPP_NUMBER = "447545571000"; 
     </script>
     <style>
         :root {
-            --bg-deep-black: #0a0a0a;
-            --bg-card-dark: #121212;
-            --gold-primary: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #f3e0aa 0%, #d4af37 50%, #aa7c11 100%);
-            --silver-gradient: linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #707070 100%);
+            --bg-black: #0a0a0a;
+            --bg-card: #121212;
+            --gold: #d4af37;
+            --gold-grad: linear-gradient(135deg, #f3e0aa 0%, #d4af37 50%, #aa7c11 100%);
+            --silver-grad: linear-gradient(135deg, #ffffff 0%, #b0b0b0 50%, #707070 100%);
             --text-light: #ffffff;
             --text-muted: #a0a0a0;
-            --border-gold: rgba(212, 175, 55, 0.3);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
-        body { background-color: var(--bg-deep-black); color: var(--text-light); line-height: 1.6; }
+        body { background-color: var(--bg-black); color: var(--text-light); line-height: 1.6; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        header { padding: 20px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); background-color: rgba(10, 10, 10, 0.9); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        header { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(10,10,10,0.9); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-placeholder { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
-        .logo-placeholder span { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-text { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; background: var(--silver-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
+        .logo-text span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         nav a { color: var(--text-light); text-decoration: none; margin-left: 20px; font-size: 0.9rem; text-transform: uppercase; }
-        nav a:hover { color: var(--gold-primary); }
-        .hero { padding: 40px 0 60px 0; text-align: center; border-bottom: 1px solid var(--border-gold); background: radial-gradient(circle at center, #1a1508 0%, var(--bg-deep-black) 70%); }
-        .hero-logo-box { max-width: 500px; margin: 0 auto 30px auto; border: 2px solid var(--gold-primary); padding: 20px; border-radius: 12px; background: #000; box-shadow: 0 0 25px rgba(214, 175, 55, 0.2); }
-        .hero-logo-fallback { font-size: 3rem; font-weight: 900; letter-spacing: 4px; background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        nav a:hover { color: var(--gold); }
+        .hero { padding: 40px 0 60px 0; text-align: center; background: radial-gradient(circle at center, #1a1508 0%, var(--bg-black) 70%); }
+        .logo-box { max-width: 450px; margin: 0 auto 30px auto; padding: 15px; }
+        .logo-img { width: 100%; max-height: 120px; object-fit: contain; }
         .hero h1 { font-size: 2.2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
         .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto; }
-        .preview-wrapper { max-width: 600px; margin: 40px auto 20px auto; background: #000; border: 1px solid var(--border-gold); border-radius: 12px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .preview-title { text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: var(--gold-primary); margin-bottom: 15px; font-weight: 700; }
+        .preview-wrapper { max-width: 600px; margin: 40px auto 20px auto; background: #000; border: 1px solid rgba(214,175,55,0.3); border-radius: 12px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); position: relative; z-index: 10; }
+        .preview-title { text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: var(--gold); margin-bottom: 15px; font-weight: 700; }
         .plate-toggle-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-        .toggle-tab { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-muted); padding: 8px 16px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; border-radius: 20px; cursor: pointer; }
-        .toggle-tab.active { background: var(--gold-gradient); color: #000; border-color: transparent; }
-        .uk-plate-viewport { width: 100%; overflow-x: auto; padding: 10px 0; margin-bottom: 15px; }
-        .uk-plate-body { width: 100%; min-width: 300px; max-width: 520px; height: 110px; border-radius: 6px; margin: 0 auto; border: 4px solid #000; box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; position: relative; padding: 0 15px; }
+        .toggle-tab { background: #111; border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); padding: 8px 16px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; border-radius: 20px; cursor: pointer; }
+        .toggle-tab.active { background: var(--gold-grad); color: #000; border-color: transparent; }
+        .uk-plate-body { width: 100%; max-width: 520px; height: 110px; border-radius: 6px; margin: 0 auto 20px auto; border: 4px solid #000; display: flex; justify-content: center; align-items: center; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .uk-plate-body.style-rear { background-color: #ffcc00; }
         .uk-plate-body.style-front { background-color: #f5f5f5; }
-        .uk-plate-body::after { content: ''; position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 4px; }
-        .plate-text { color: #111111; font-size: calc(1.8rem + 4vw); font-weight: 900; letter-spacing: 4px; text-transform: uppercase; text-shadow: 2px 2px 0px rgba(0,0,0,0.9); white-space: nowrap; }
+        .plate-text { color: #111111; font-size: calc(1.8rem + 3vw); font-weight: 900; letter-spacing: 4px; text-transform: uppercase; text-shadow: 2px 2px 0px rgba(0,0,0,0.9); white-space: nowrap; }
         @media(min-width: 580px) { .plate-text { font-size: 3.5rem; letter-spacing: 6px; } }
         .builder-inputs { display: flex; flex-direction: column; gap: 15px; max-width: 450px; margin: 0 auto; }
         @media(min-width: 480px) { .builder-inputs { flex-direction: row; } }
-        .plate-input { width: 100%; padding: 14px; border-radius: 6px; border: 1px solid rgba(214, 175, 55, 0.4); background: #111; color: #fff; text-transform: uppercase; text-align: center; font-size: 1.1rem; font-weight: 700; }
-        .cta-button { display: inline-block; background: var(--gold-gradient); color: #000; text-decoration: none; padding: 14px 25px; font-weight: 700; border-radius: 4px; text-transform: uppercase; border: none; cursor: pointer; white-space: nowrap; }
+        .plate-input { flex: 2; padding: 14px; border-radius: 6px; border: 1px solid rgba(214,175,55,0.4); background: #111; color: #fff; text-transform: uppercase; text-align: center; font-size: 1.1rem; font-weight: 700; position: relative; z-index: 20; }
+        .cta-button { display: inline-block; background: var(--gold-grad); color: #000; padding: 14px 25px; font-weight: 700; border-radius: 4px; text-transform: uppercase; border: none; cursor: pointer; white-space: nowrap; position: relative; z-index: 20; }
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50px; padding: 12px 24px; font-weight: 700; font-size: 0.9rem; z-index: 1000; text-decoration: none; text-transform: uppercase; border: 2px solid rgba(255,255,255,0.2); }
-        .services-bar { background: #000; padding: 20px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .services-grid { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 15px; }
-        .service-item { font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 1rem; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .services-bar { background: #000; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .services-grid { display: flex; justify-content: space-around; text-align: center; }
+        .service-item { font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 1rem; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .products { padding: 60px 0; }
         .section-title { text-align: center; font-size: 1.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
-        .section-title span { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-title span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
-        .card { background-color: var(--bg-card-dark); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 35px 20px; text-align: center; }
-        .card-badge { display: inline-block; border: 1px solid var(--gold-primary); padding: 5px 15px; border-radius: 4px; font-weight: 700; color: var(--gold-primary); margin-bottom: 15px; }
+        .card { background-color: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 35px 20px; text-align: center; }
+        .card-badge { display: inline-block; border: 1px solid var(--gold); padding: 5px 15px; border-radius: 4px; font-weight: 700; color: var(--gold); margin-bottom: 15px; }
         .card h3 { font-size: 1.3rem; text-transform: uppercase; margin-bottom: 10px; }
         .card p { color: var(--text-muted); font-size: 0.95rem; }
-        .faq-section { padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .faq-section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); }
         .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-        .faq-item { background: var(--bg-card-dark); border: 1px solid rgba(255, 255, 255, 0.03); border-left: 3px solid var(--gold-primary); padding: 25px; border-radius: 4px; }
+        .faq-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.03); border-left: 3px solid var(--gold); padding: 25px; border-radius: 4px; }
         .faq-item h4 { font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px; }
         .faq-item p { color: var(--text-muted); font-size: 0.95rem; }
-        .contact { padding: 60px 0; background-color: var(--bg-card-dark); border-top: 1px solid var(--border-gold); }
-        .form-box { max-width: 600px; margin: 0 auto; background: #000; padding: 30px 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; text-transform: uppercase; font-size: 0.85rem; color: var(--text-muted); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background-color: var(--bg-deep-black); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; border-radius: 4px; }
-        .submit-btn { width: 100%; background: var(--gold-gradient); color: #000; border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; cursor: pointer; }
-        footer { background-color: var(--bg-deep-black); padding: 30px 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.85rem; color: var(--text-muted); }
+        footer { background-color: #000; padding: 30px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: var(--text-muted); }
     </style>
 </head>
 <body>
+
     <a href="#" class="whatsapp-float" onclick="sendWhatsAppMessage(event)">Chat</a>
+
     <header>
         <div class="container nav-container">
-            <div class="logo-placeholder">REG<span>MAN</span></div>
+            <div class="logo-text">REG<span>MAN</span></div>
             <nav>
                 <a href="#styles">Styles</a>
                 <a href="#faq">Legality</a>
-                <a href="#quote">Get a Quote</a>
             </nav>
         </div>
     </header>
+
     <section class="hero">
         <div class="container">
-            <div class="hero-logo-box">
-                <div class="hero-logo-fallback">REGMAN</div>
-                <div style="color: var(--gold-primary); letter-spacing: 2px; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">NUMBER PLATE SPECIALISTS</div>
+            <div class="logo-box">
+                <!-- This links to your logo graphic file inside Working Copy -->
+                <img src="logo.png" alt="REGMAN Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
+                <div id="fallback-logo" style="display:none;">
+                    <div style="font-size:3rem; font-weight:900; letter-spacing:4px; background:var(--silver-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">REGMAN</div>
+                    <div style="color:var(--gold); letter-spacing:2px; font-size:0.8rem; font-weight:600;">NUMBER PLATE SPECIALISTS</div>
+                </div>
             </div>
+            
             <h1>Premium Custom Plates</h1>
             <p>Upgrade your vehicle's look with our bespoke premium number plates. Certified manufacturer focusing on design, supply, and perfect fitment.</p>
+
             <div class="preview-wrapper">
                 <div class="preview-title">Live Plate Preview</div>
                 <div class="plate-toggle-tabs">
                     <button type="button" class="toggle-tab" onclick="setPlateStyle('front')">Front Plate</button>
                     <button type="button" class="toggle-tab active" onclick="setPlateStyle('rear')">Rear Plate</button>
                 </div>
-                <div class="uk-plate-viewport">
-                    <div class="uk-plate-body style-rear" id="plateBox">
+                <div class="uk-plate-body style-rear" id="plateBox">
+                    <div class="plate-text" id="plateDisplay">REG MAN</div>
+                </div>
+                <div class="builder-inputs">
+                    <input type="text" class="plate-input" id="plateInput" placeholder="ENTER REG" maxlength="8">
+                    <button type="button" class="cta-button" onclick="sendWhatsAppMessage(event)">Order via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="services-bar">
+        <div class="container services-grid">
+            <div class="service-item">DESIGN</div>
+            <div class="service-item">SUPPLY</div>
+            <div class="service-item">FIT</div>
+        </div>
+    </div>
+
+    <section class="products" id="styles">
+        <div class="container">
+            <h2 class="section-title">Our Premium <span>Options</span></h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-badge">3D</div>
+                    <h3>3D Plates</h3>
+                    <p>High-quality raised polyurethane gel characters for a sleek, rounded premium finish.</p>
+                </div>
+                <div class="card">
+                    <div class="card-badge">4D</div>
+                    <h3>4D Plates</h3>
