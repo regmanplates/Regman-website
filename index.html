@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGMAN | Premium Number Plate Specialist</title>
+    <title>REGMAN | Premium Number Plate Specialists</title>
     <script>
         // ==========================================
         // CONFIGURATION: CHANGE YOUR PHONE NUMBER HERE
         // ==========================================
-        const WHATSAPP_NUMBER = "447545571000"; 
+        const WHATSAPP_NUMBER = "447000000000"; 
     </script>
     <style>
         :root {
@@ -37,7 +37,7 @@
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
         .brand-logo { font-size: 1.6rem; font-weight: 900; letter-spacing: 3px; background: var(--silver-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
         .brand-logo span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        nav a { color: var(--text-main); text-decoration: none; margin-left: 24px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+        nav a { color: var(--text-main); text-decoration: none; margin-left: 24px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         nav a:hover { color: var(--gold); }
 
         /* HERO AREA & BUILDER WORKSPACE */
@@ -64,7 +64,7 @@
         .uk-plate.front-view { background: #f8f8f8; }
         .uk-plate::after { content: ''; position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px; border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; pointer-events: none; }
         
-        .plate-text-rendering { color: #111; font-family: 'Arial Black', -apple-system, sans-serif; font-size: calc(2rem + 3vw); font-weight: 900; letter-spacing: 5px; text-transform: uppercase; white-space: nowrap; transition: all 0.2s; }
+        .plate-text-rendering { color: #111; font-family: 'Arial Black', -apple-system, sans-serif; font-size: calc(1.8rem + 3vw); font-weight: 900; letter-spacing: 5px; text-transform: uppercase; white-space: nowrap; transition: all 0.2s; }
         
         /* TEXT RENDERING VARIATIONS */
         .text-style-printed { text-shadow: 1px 1px 0px rgba(0,0,0,0.15); }
@@ -76,7 +76,7 @@
         /* INPUT CONFIGURATORS */
         .input-box-flex { display: flex; flex-direction: column; gap: 15px; max-width: 520px; margin: 0 auto; }
         @media(min-width: 500px) { .input-box-flex { flex-direction: row; } }
-        .main-reg-field { flex: 2; padding: 16px; border-radius: 6px; border: 1px solid rgba(214,175,55,0.3); background: #0c0c0c; color: #fff; text-transform: uppercase; text-align: center; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; }
+        .main-reg-field { flex: 2; padding: 16px; border-radius: 6px; border: 1px solid rgba(214, 175, 55, 0.3); background: #0c0c0c; color: #fff; text-transform: uppercase; text-align: center; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; width: 100%; }
         .main-reg-field:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 15px rgba(214,175,55,0.2); }
         .action-submit-btn { display: inline-block; background: var(--gold-grad); color: #000; padding: 16px 30px; font-weight: 800; border-radius: 4px; text-transform: uppercase; border: none; cursor: pointer; font-size: 0.95rem; letter-spacing: 1px; box-shadow: 0 5px 20px rgba(214,175,55,0.3); white-space: nowrap; }
 
@@ -85,7 +85,7 @@
         .section-header { text-align: center; font-size: 1.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 50px; }
         .section-header span { background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .step-card { background: var(--bg-card); padding: 40px 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.02); position: relative; }
+        .step-card { background: var(--bg-card); padding: 40px 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.02); position: relative; text-align: left; }
         .step-num { font-size: 0.85rem; font-weight: 800; color: var(--gold); letter-spacing: 2px; margin-bottom: 15px; display: block; }
         .step-card h3 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
         .step-card p { color: var(--text-muted); font-size: 0.95rem; }
@@ -101,16 +101,16 @@
 
         /* LEGAL STANDARDS & ACCORDIONS */
         .legal { padding: 80px 0; background: var(--bg-surface); border-top: 1px solid rgba(255,255,255,0.03); }
-        .legal-stack { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .legal-stack { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; text-align: left; }
         .legal-item { background: var(--bg-card); padding: 30px; border-radius: 6px; border-left: 4px solid var(--gold); }
         .legal-item h4 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: 700; }
         .legal-item p { color: var(--text-muted); font-size: 0.95rem; }
 
-        /* BRAND LOGO ELEMENT BOX */
+        /* BRAND LOGO FRAME */
         .brand-logo-frame { max-width: 450px; margin: 0 auto 25px auto; padding: 10px; }
         .brand-logo-asset { width: 100%; max-height: 110px; object-fit: contain; }
 
         /* FOOTER */
         footer { background: #000; padding: 40px 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); }
         
-        /* FLOATING RESPONSIVE SUPPORT */
+        /* FLOATING WHATSAPP */
