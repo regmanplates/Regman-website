@@ -6,6 +6,9 @@
     <title>REGMAN | Premium Number Plate Specialist</title>
     <link rel="stylesheet" href="styles.css">
     <script>
+        // ==========================================
+        // CONFIGURATION: CHANGE YOUR PHONE NUMBER HERE
+        // ==========================================
         const WHATSAPP_NUMBER = "447545571000"; 
     </script>
 </head>
@@ -34,6 +37,16 @@
 
     <section class="hero" id="studio">
         <div class="container">
+            
+            <!-- YOUR LOGO IMAGE ELEMENT -->
+            <div style="max-width: 250px; margin: 0 auto 30px auto; text-align: center;">
+                <img src="logo.png" alt="REGMAN Logo" style="width: 100%; height: auto; object-fit: contain;" onerror="this.style.display='none'; document.getElementById('fallback-text-logo').style.display='block';">
+                <div id="fallback-text-logo" style="display:none;">
+                    <div style="font-size: 2.8rem; font-weight: 900; letter-spacing: 3px; background: var(--silver-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">REGMAN</div>
+                    <div style="color: var(--gold); letter-spacing: 2px; font-size: 0.75rem; font-weight: 700; margin-top: 2px;">NUMBER PLATE SPECIALISTS</div>
+                </div>
+            </div>
+
             <span class="tagline">Plate Design Lab</span>
             <h1>Design Your Premium <span>Custom Plates</span></h1>
             <p>Craft your road-legal replacement registration plates online using our interactive high-fidelity proofing workstation.</p>
@@ -61,7 +74,7 @@
                 </div>
 
                 <div class="input-box-flex">
-                    <input type="text" class="main-reg-field" id="registrationInputField" placeholder="ENTER REG" maxlength="8">
+                    <input type="text" class="main-reg-field" id="registrationInputField" placeholder="ENTER REG" maxlength="8" value="REG MAN">
                     <button type="button" class="action-submit-btn" onclick="executeOrderPipeline(event)">Order via WhatsApp</button>
                 </div>
             </div>
@@ -171,22 +184,3 @@
             activeStyleTextureProfile = targetStyleSetting;
             const btnPrint = document.getElementById('style-print');
             const btn3D = document.getElementById('style-3d');
-            const btn4D = document.getElementById('style-4d');
-            
-            btnPrint.classList.remove('active');
-            btn3D.classList.remove('active');
-            btn4D.classList.remove('active');
-            
-            textDisplay.className = "plate-text-rendering text-style-" + targetStyleSetting;
-            
-            if(targetStyleSetting === 'printed') btnPrint.classList.add('active');
-            if(targetStyleSetting === '3d') btn3D.classList.add('active');
-            if(targetStyleSetting === '4d') btn4D.classList.add('active');
-        }
-
-        function executeOrderPipeline(event) {
-            event.preventDefault();
-            const finalizedRegMark = inputField.value.toUpperCase() || "REG MAN";
-            const transactionalTextMessage = "Hi Regman, I would like to place an order for a custom set of replacement number plates.\n\n" +
-            "• Registration Mark: " + finalizedRegMark + "\n" +
-            "• Orientation Type: " + activePlacementViewSetting.toUpperCase() + " Plate\n" +
