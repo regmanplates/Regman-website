@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REGMAN | Number Plate Specialists</title>
+
+    <script>
+        // ==========================================
+        // CONFIGURATION: CHANGE YOUR PHONE NUMBER HERE
+        // ==========================================
+        // Keep the 44 at the start, drop the 0.
+        // Example: If your mobile is 07123 456789, type: "447545571000"
+        const WHATSAPP_NUMBER = "447545571000"; 
+    </script>
+
     <style>
         /* --- DESIGN SYSTEM & COLORS --- */
         :root {
@@ -126,7 +136,7 @@
             font-size: 1.05rem;
         }
 
-        /* --- MOBILE RESPONSIBLE LIVE PLATE BUILDER --- */
+        /* --- MOBILE RESPONSIVE BUILDER --- */
         .preview-wrapper {
             max-width: 600px;
             margin: 40px auto 20px auto;
@@ -174,7 +184,6 @@
             box-shadow: 0 2px 10px rgba(214, 175, 55, 0.3);
         }
 
-        /* Scalable UK Plate Engine Container */
         .uk-plate-viewport {
             width: 100%;
             overflow-x: auto;
@@ -215,7 +224,6 @@
             color: #111111;
             font-family: 'Charles Wright', 'Arial Black', sans-serif;
             font-size: calc(1.8rem + 4vw);
-            max-font-size: 3.5rem;
             font-weight: 900;
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -223,7 +231,6 @@
             white-space: nowrap;
         }
 
-        /* Responsive Constraints on text scaling rules */
         @media(min-width: 580px) {
             .plate-text { font-size: 3.5rem; letter-spacing: 6px; }
         }
@@ -282,7 +289,35 @@
             box-shadow: 0 6px 20px rgba(214, 175, 55, 0.6);
         }
 
-        /* --- CORE SERVICES SECTION --- */
+        /* --- FLOATING WHATSAPP BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            padding: 12px 24px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- SERVICES BAR --- */
         .services-bar {
             background: #000;
             padding: 20px 0;
@@ -300,40 +335,3 @@
         .service-item {
             font-weight: 600;
             letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 1rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* --- PRODUCTS/STYLES SECTION --- */
-        .products {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
-
-        .section-title span {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background-color: var(--bg-card-dark);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 35px 20px;
