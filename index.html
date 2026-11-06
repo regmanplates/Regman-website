@@ -1,22 +1,13 @@
-html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REGMAN | Number Plate Specialists</title>
-
     <script>
-        // ==========================================
-        // CONFIGURATION: CHANGE YOUR PHONE NUMBER HERE
-        // ==========================================
-        // Keep the 44 at the start, drop the 0.
-        // Example: If your mobile is 07123 456789, type: "447123456789"
-        const WHATSAPP_NUMBER = "447545571000"; 
+        const WHATSAPP_NUMBER = "447000000000"; 
     </script>
-
     <style>
-        /* --- DESIGN SYSTEM & COLORS --- */
         :root {
             --bg-deep-black: #0a0a0a;
             --bg-card-dark: #121212;
@@ -27,513 +18,87 @@ html
             --text-muted: #a0a0a0;
             --border-gold: rgba(212, 175, 55, 0.3);
         }
-
-        /* --- GLOBAL STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-deep-black);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* --- NAVIGATION --- */
-        header {
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background-color: rgba(10, 10, 10, 0.9);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-placeholder {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            background: var(--silver-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-        }
-
-        .logo-placeholder span {
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--gold-primary);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 40px 0 60px 0;
-            text-align: center;
-            border-bottom: 1px solid var(--border-gold);
-            background: radial-gradient(circle at center, #1a1508 0%, var(--bg-deep-black) 70%);
-        }
-
-        .hero-logo-box {
-            max-width: 500px;
-            margin: 0 auto 30px auto;
-            border: 2px solid var(--gold-primary);
-            padding: 20px;
-            border-radius: 12px;
-            background: #000;
-            box-shadow: 0 0 25px rgba(214, 175, 55, 0.2);
-        }
-
-        .hero-logo-fallback {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            background: var(--silver-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero h1 {
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-            font-size: 1.05rem;
-        }
-
-        /* --- MOBILE RESPONSIVE LIVE PLATE BUILDER --- */
-        .preview-wrapper {
-            max-width: 600px;
-            margin: 40px auto 20px auto;
-            background: #000;
-            border: 1px solid var(--border-gold);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .preview-title {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            color: var(--gold-primary);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .plate-toggle-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .toggle-tab {
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-muted);
-            padding: 8px 16px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .toggle-tab.active {
-            background: var(--gold-gradient);
-            color: #000;
-            border-color: transparent;
-            box-shadow: 0 2px 10px rgba(214, 175, 55, 0.3);
-        }
-
-        .uk-plate-viewport {
-            width: 100%;
-            overflow-x: auto;
-            padding: 10px 0;
-            margin-bottom: 15px;
-        }
-
-        .uk-plate-body {
-            width: 100%;
-            min-width: 300px;
-            max-width: 520px;
-            height: 110px;
-            border-radius: 6px;
-            margin: 0 auto;
-            border: 4px solid #000;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 0 15px;
-            transition: background-color 0.3s ease;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+        body { background-color: var(--bg-deep-black); color: var(--text-light); line-height: 1.6; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        header { padding: 20px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); background-color: rgba(10, 10, 10, 0.9); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-placeholder { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
+        .logo-placeholder span { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        nav a { color: var(--text-light); text-decoration: none; margin-left: 20px; font-size: 0.9rem; text-transform: uppercase; }
+        nav a:hover { color: var(--gold-primary); }
+        .hero { padding: 40px 0 60px 0; text-align: center; border-bottom: 1px solid var(--border-gold); background: radial-gradient(circle at center, #1a1508 0%, var(--bg-deep-black) 70%); }
+        .hero-logo-box { max-width: 500px; margin: 0 auto 30px auto; border: 2px solid var(--gold-primary); padding: 20px; border-radius: 12px; background: #000; box-shadow: 0 0 25px rgba(214, 175, 55, 0.2); }
+        .hero-logo-fallback { font-size: 3rem; font-weight: 900; letter-spacing: 4px; background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero h1 { font-size: 2.2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px auto; }
+        .preview-wrapper { max-width: 600px; margin: 40px auto 20px auto; background: #000; border: 1px solid var(--border-gold); border-radius: 12px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .preview-title { text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: var(--gold-primary); margin-bottom: 15px; font-weight: 700; }
+        .plate-toggle-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .toggle-tab { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-muted); padding: 8px 16px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; border-radius: 20px; cursor: pointer; }
+        .toggle-tab.active { background: var(--gold-gradient); color: #000; border-color: transparent; }
+        .uk-plate-viewport { width: 100%; overflow-x: auto; padding: 10px 0; margin-bottom: 15px; }
+        .uk-plate-body { width: 100%; min-width: 300px; max-width: 520px; height: 110px; border-radius: 6px; margin: 0 auto; border: 4px solid #000; box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; position: relative; padding: 0 15px; }
         .uk-plate-body.style-rear { background-color: #ffcc00; }
         .uk-plate-body.style-front { background-color: #f5f5f5; }
-
-        .uk-plate-body::after {
-            content: '';
-            position: absolute;
-            top: 2px; left: 2px; right: 2px; bottom: 2px;
-            border: 1px solid rgba(0, 0, 0, 0.12);
-            border-radius: 4px;
-            pointer-events: none;
-        }
-
-        .plate-text {
-            color: #111111;
-            font-family: 'Charles Wright', 'Arial Black', sans-serif;
-            font-size: calc(1.8rem + 4vw);
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.9), 3px 4px 6px rgba(0, 0, 0, 0.4);
-            white-space: nowrap;
-        }
-
-        @media(min-width: 580px) {
-            .plate-text { font-size: 3.5rem; letter-spacing: 6px; }
-        }
-
-        .builder-inputs {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 450px;
-            margin: 0 auto;
-        }
-
-        @media(min-width: 480px) {
-            .builder-inputs { flex-direction: row; }
-        }
-
-        .plate-input {
-            width: 100%;
-            padding: 14px;
-            border-radius: 6px;
-            border: 1px solid rgba(214, 175, 55, 0.4);
-            background: #111;
-            color: #fff;
-            text-transform: uppercase;
-            text-align: center;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        .plate-input:focus {
-            outline: none;
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 10px rgba(214, 175, 55, 0.3);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--gold-gradient);
-            color: #000;
-            text-decoration: none;
-            padding: 14px 25px;
-            font-weight: 700;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(214, 175, 55, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(214, 175, 55, 0.6);
-        }
-
-        /* --- FLOATING WHATSAPP BUTTON --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            border-radius: 50px;
-            text-align: center;
-            padding: 12px 24px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            z-index: 1000;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.05);
-        }
-
-        /* --- SERVICES BAR --- */
-        .services-bar {
-            background: #000;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .services-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            text-align: center;
-            gap: 15px;
-        }
-
-        .service-item {
-            font-weight: 600;
-            letter-spacing: 3px;
-Use code with caution.
-text-transform: uppercase;
-font-size: 1rem;
-background: var(--gold-gradient);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
-/* --- PRODUCTS SECTION --- */
-.products { padding: 60px 0; }
-.section-title {
-text-align: center;
-font-size: 1.8rem;
-letter-spacing: 2px;
-text-transform: uppercase;
-margin-bottom: 40px;
-}
-.section-title span {
-background: var(--gold-gradient);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-gap: 25px;
-}
-.card {
-background-color: var(--bg-card-dark);
-border: 1px solid rgba(255, 255, 255, 0.05);
-border-radius: 8px;
-padding: 35px 20px;
-text-align: center;
-transition: border-color 0.3s, transform 0.3s;
-}
-.card:hover {
-border-color: var(--gold-primary);
-transform: translateY(-5px);
-}
-.card-badge {
-display: inline-block;
-border: 1px solid var(--gold-primary);
-padding: 5px 15px;
-border-radius: 4px;
-font-weight: 700;
-color: var(--gold-primary);
-margin-bottom: 15px;
-letter-spacing: 2px;
-}
-.card h3 {
-font-size: 1.3rem;
-text-transform: uppercase;
-margin-bottom: 10px;
-letter-spacing: 1px;
-}
-.card p { color: var(--text-muted); font-size: 0.95rem; }
-/* --- FAQ SECTION --- */
-.faq-section { padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
-.faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-.faq-item {
-background: var(--bg-card-dark);
-border: 1px solid rgba(255, 255, 255, 0.03);
-border-left: 3px solid var(--gold-primary);
-padding: 25px;
-border-radius: 4px;
-}
-.faq-item h4 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-.faq-item p { color: var(--text-muted); font-size: 0.95rem; }
-/* --- CONTACT FORM --- */
-.contact { padding: 60px 0; background-color: var(--bg-card-dark); border-top: 1px solid var(--border-gold); }
-.form-box { max-width: 600px; margin: 0 auto; background: #000; padding: 30px 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); }
-@media(min-width: 580px) { .form-box { padding: 40px; } }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; margin-bottom: 8px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; color: var(--text-muted); }
-.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background-color: var(--bg-deep-black); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; border-radius: 4px; font-size: 1rem; }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold-primary); }
-.submit-btn { width: 100%; background: var(--gold-gradient); color: #000; border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; }
-/* --- FOOTER --- */
-footer { background-color: var(--bg-deep-black); padding: 30px 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.85rem; color: var(--text-muted); }
-
-
-WhatsApp Chat
-REGMAN
-
-Styles
-Legality
-Get a Quote
-
-
-REGMAN
-NUMBER PLATE SPECIALISTS
-
-Premium Custom Plates
-Upgrade your vehicle's look with our bespoke premium number plates. Certified manufacturer focusing on design, supply, and perfect fitment.
-Live Plate Preview
-Front Plate
-Rear Plate
-REG MAN
-
-Order via WhatsApp
-
-
-
-DESIGN
-SUPPLY
-FIT
-
-Our Premium Options
-
-
-3D
-3D Plates
-High-quality raised polyurethane gel characters for a sleek, rounded premium finish.
-
-
-4D
-4D Plates
-Laser-cut solid acrylic precision-edged characters for a sharp, high-impact aggressive look.
-
-
-GEL
-Gel Plates
-Classic high-gloss domed premium finish engineered to look deep and withstand weathering.
-
-
-PRIVATE
-Private Reg
-Complete source, transfer, and alignment handling of your bespoke private registrations.
-
-
-
-Road Legal Standards
-
-
-Are 3D and 4D plates road legal in the UK?
-Yes, completely. As long as they use the official Charles Wright font, meet the strict legal spacing criteria, and are manufactured using valid reflective background layers, raised standard 3D and 4D profile styles are entirely DVLA compliant.
-
-
-What is BSAU 145e compliance?
-BSAU 145e is the rigorous British Standard for vehicle registration plates. It marks structural resilience tests ensuring components survive road gravel impacts, severe freeze-and-thaw cycles, high-exposure weather abrasion, and clear optical scanning safety constraints.
-
-
-What documents do I need to bring?
-To keep services legal, we must verify your identity alongside proof of entitlement to the registration mark. Popular choices include your driving licence or passport along with your V5C logbook, V750 certificate, or eV948 retention slips.
-
-
-
-Email Enquiry
-
-
-Full Name
-Email Address
-Desired Character Style
-4D Laser Cut
-3D Gel
-Standard Gel
-Private Registration Assistance
-
-
-Registration details / requirements
-Submit Request
-
-
-
-© 2026 REGMAN Number Plate Specialists. All Rights Reserved.
-
-const plateInput = document.getElementById('plateInput');
-const plateDisplay = document.getElementById('plateDisplay');
-const plateBox = document.getElementById('plateBox');
-const detailsField = document.getElementById('details');
-plateInput.addEventListener('input', function(e) {
-let uppercaseText = e.target.value.toUpperCase();
-plateDisplay.textContent = uppercaseText || "REG MAN";
-});
-var currentStyle = "rear";
-function setPlateStyle(style) {
-currentStyle = style;
-if(style === 'front') {
-plateBox.className = 'uk-plate-body style-front';
-} else {
-plateBox.className = 'uk-plate-body style-rear';
-}
-const tabs = document.querySelectorAll('.toggle-tab');
-tabs.forEach(tab => {
-if(tab.textContent.toLowerCase().includes(style)) {
-tab.classList.add('active');
-} else {
-tab.classList.remove('active');
-}
-});
-}
-function sendWhatsAppMessage(event) {
-event.preventDefault();
-const regText = plateInput.value.toUpperCase() || "REG MAN";
-const message = "Hi Regman, I want to order a custom " + currentStyle.toUpperCase() + " plate for the registration: " + regText;
-window.open("wa.me" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), '_blank');
-}
-function transferRegToForm() {
-const regText = plateInput.value.toUpperCase() || "REG MAN";
-const name = document.getElementById('name').value;
-alert("Thanks " + name + "! Your alternative fallback request has been logged for registration: " + regText);
-}
+        .uk-plate-body::after { content: ''; position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 4px; }
+        .plate-text { color: #111111; font-size: calc(1.8rem + 4vw); font-weight: 900; letter-spacing: 4px; text-transform: uppercase; text-shadow: 2px 2px 0px rgba(0,0,0,0.9); white-space: nowrap; }
+        @media(min-width: 580px) { .plate-text { font-size: 3.5rem; letter-spacing: 6px; } }
+        .builder-inputs { display: flex; flex-direction: column; gap: 15px; max-width: 450px; margin: 0 auto; }
+        @media(min-width: 480px) { .builder-inputs { flex-direction: row; } }
+        .plate-input { width: 100%; padding: 14px; border-radius: 6px; border: 1px solid rgba(214, 175, 55, 0.4); background: #111; color: #fff; text-transform: uppercase; text-align: center; font-size: 1.1rem; font-weight: 700; }
+        .cta-button { display: inline-block; background: var(--gold-gradient); color: #000; text-decoration: none; padding: 14px 25px; font-weight: 700; border-radius: 4px; text-transform: uppercase; border: none; cursor: pointer; white-space: nowrap; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50px; padding: 12px 24px; font-weight: 700; font-size: 0.9rem; z-index: 1000; text-decoration: none; text-transform: uppercase; border: 2px solid rgba(255,255,255,0.2); }
+        .services-bar { background: #000; padding: 20px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .services-grid { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 15px; }
+        .service-item { font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 1rem; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .products { padding: 60px 0; }
+        .section-title { text-align: center; font-size: 1.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+        .section-title span { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .card { background-color: var(--bg-card-dark); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 35px 20px; text-align: center; }
+        .card-badge { display: inline-block; border: 1px solid var(--gold-primary); padding: 5px 15px; border-radius: 4px; font-weight: 700; color: var(--gold-primary); margin-bottom: 15px; }
+        .card h3 { font-size: 1.3rem; text-transform: uppercase; margin-bottom: 10px; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+        .faq-section { padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .faq-item { background: var(--bg-card-dark); border: 1px solid rgba(255, 255, 255, 0.03); border-left: 3px solid var(--gold-primary); padding: 25px; border-radius: 4px; }
+        .faq-item h4 { font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px; }
+        .faq-item p { color: var(--text-muted); font-size: 0.95rem; }
+        .contact { padding: 60px 0; background-color: var(--bg-card-dark); border-top: 1px solid var(--border-gold); }
+        .form-box { max-width: 600px; margin: 0 auto; background: #000; padding: 30px 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; text-transform: uppercase; font-size: 0.85rem; color: var(--text-muted); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background-color: var(--bg-deep-black); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; border-radius: 4px; }
+        .submit-btn { width: 100%; background: var(--gold-gradient); color: #000; border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; cursor: pointer; }
+        footer { background-color: var(--bg-deep-black); padding: 30px 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.85rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <a href="#" class="whatsapp-float" onclick="sendWhatsAppMessage(event)">Chat</a>
+    <header>
+        <div class="container nav-container">
+            <div class="logo-placeholder">REG<span>MAN</span></div>
+            <nav>
+                <a href="#styles">Styles</a>
+                <a href="#faq">Legality</a>
+                <a href="#quote">Get a Quote</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-logo-box">
+                <div class="hero-logo-fallback">REGMAN</div>
+                <div style="color: var(--gold-primary); letter-spacing: 2px; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">NUMBER PLATE SPECIALISTS</div>
+            </div>
+            <h1>Premium Custom Plates</h1>
+            <p>Upgrade your vehicle's look with our bespoke premium number plates. Certified manufacturer focusing on design, supply, and perfect fitment.</p>
+            <div class="preview-wrapper">
+                <div class="preview-title">Live Plate Preview</div>
+                <div class="plate-toggle-tabs">
+                    <button type="button" class="toggle-tab" onclick="setPlateStyle('front')">Front Plate</button>
+                    <button type="button" class="toggle-tab active" onclick="setPlateStyle('rear')">Rear Plate</button>
+                </div>
+                <div class="uk-plate-viewport">
+                    <div class="uk-plate-body style-rear" id="plateBox">
