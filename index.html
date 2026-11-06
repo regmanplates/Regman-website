@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -335,3 +336,204 @@
         .service-item {
             font-weight: 600;
             letter-spacing: 3px;
+Use code with caution.
+text-transform: uppercase;
+font-size: 1rem;
+background: var(--gold-gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+/* --- PRODUCTS SECTION --- */
+.products { padding: 60px 0; }
+.section-title {
+text-align: center;
+font-size: 1.8rem;
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-bottom: 40px;
+}
+.section-title span {
+background: var(--gold-gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 25px;
+}
+.card {
+background-color: var(--bg-card-dark);
+border: 1px solid rgba(255, 255, 255, 0.05);
+border-radius: 8px;
+padding: 35px 20px;
+text-align: center;
+transition: border-color 0.3s, transform 0.3s;
+}
+.card:hover {
+border-color: var(--gold-primary);
+transform: translateY(-5px);
+}
+.card-badge {
+display: inline-block;
+border: 1px solid var(--gold-primary);
+padding: 5px 15px;
+border-radius: 4px;
+font-weight: 700;
+color: var(--gold-primary);
+margin-bottom: 15px;
+letter-spacing: 2px;
+}
+.card h3 {
+font-size: 1.3rem;
+text-transform: uppercase;
+margin-bottom: 10px;
+letter-spacing: 1px;
+}
+.card p { color: var(--text-muted); font-size: 0.95rem; }
+/* --- FAQ SECTION --- */
+.faq-section { padding: 60px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+.faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.faq-item {
+background: var(--bg-card-dark);
+border: 1px solid rgba(255, 255, 255, 0.03);
+border-left: 3px solid var(--gold-primary);
+padding: 25px;
+border-radius: 4px;
+}
+.faq-item h4 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.faq-item p { color: var(--text-muted); font-size: 0.95rem; }
+/* --- CONTACT FORM --- */
+.contact { padding: 60px 0; background-color: var(--bg-card-dark); border-top: 1px solid var(--border-gold); }
+.form-box { max-width: 600px; margin: 0 auto; background: #000; padding: 30px 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); }
+@media(min-width: 580px) { .form-box { padding: 40px; } }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; color: var(--text-muted); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background-color: var(--bg-deep-black); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; border-radius: 4px; font-size: 1rem; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold-primary); }
+.submit-btn { width: 100%; background: var(--gold-gradient); color: #000; border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; }
+/* --- FOOTER --- */
+footer { background-color: var(--bg-deep-black); padding: 30px 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.85rem; color: var(--text-muted); }
+
+
+WhatsApp Chat
+REGMAN
+
+Styles
+Legality
+Get a Quote
+
+
+REGMAN
+NUMBER PLATE SPECIALISTS
+
+Premium Custom Plates
+Upgrade your vehicle's look with our bespoke premium number plates. Certified manufacturer focusing on design, supply, and perfect fitment.
+Live Plate Preview
+Front Plate
+Rear Plate
+REG MAN
+
+Order via WhatsApp
+
+
+
+DESIGN
+SUPPLY
+FIT
+
+Our Premium Options
+
+
+3D
+3D Plates
+High-quality raised polyurethane gel characters for a sleek, rounded premium finish.
+
+
+4D
+4D Plates
+Laser-cut solid acrylic precision-edged characters for a sharp, high-impact aggressive look.
+
+
+GEL
+Gel Plates
+Classic high-gloss domed premium finish engineered to look deep and withstand weathering.
+
+
+PRIVATE
+Private Reg
+Complete source, transfer, and alignment handling of your bespoke private registrations.
+
+
+
+Road Legal Standards
+
+
+Are 3D and 4D plates road legal in the UK?
+Yes, completely. As long as they use the official Charles Wright font, meet the strict legal spacing criteria, and are manufactured using valid reflective background layers, raised standard 3D and 4D profile styles are entirely DVLA compliant.
+
+
+What is BSAU 145e compliance?
+BSAU 145e is the rigorous British Standard for vehicle registration plates. It marks structural resilience tests ensuring components survive road gravel impacts, severe freeze-and-thaw cycles, high-exposure weather abrasion, and clear optical scanning safety constraints.
+
+
+What documents do I need to bring?
+To keep services legal, we must verify your identity alongside proof of entitlement to the registration mark. Popular choices include your driving licence or passport along with your V5C logbook, V750 certificate, or eV948 retention slips.
+
+
+
+Email Enquiry
+
+
+Full Name
+Email Address
+Desired Character Style
+4D Laser Cut
+3D Gel
+Standard Gel
+Private Registration Assistance
+
+
+Registration details / requirements
+Submit Request
+
+
+
+© 2026 REGMAN Number Plate Specialists. All Rights Reserved.
+
+const plateInput = document.getElementById('plateInput');
+const plateDisplay = document.getElementById('plateDisplay');
+const plateBox = document.getElementById('plateBox');
+const detailsField = document.getElementById('details');
+plateInput.addEventListener('input', function(e) {
+let uppercaseText = e.target.value.toUpperCase();
+plateDisplay.textContent = uppercaseText || "REG MAN";
+});
+var currentStyle = "rear";
+function setPlateStyle(style) {
+currentStyle = style;
+if(style === 'front') {
+plateBox.className = 'uk-plate-body style-front';
+} else {
+plateBox.className = 'uk-plate-body style-rear';
+}
+const tabs = document.querySelectorAll('.toggle-tab');
+tabs.forEach(tab => {
+if(tab.textContent.toLowerCase().includes(style)) {
+tab.classList.add('active');
+} else {
+tab.classList.remove('active');
+}
+});
+}
+function sendWhatsAppMessage(event) {
+event.preventDefault();
+const regText = plateInput.value.toUpperCase() || "REG MAN";
+const message = "Hi Regman, I want to order a custom " + currentStyle.toUpperCase() + " plate for the registration: " + regText;
+window.open("wa.me" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), '_blank');
+}
+function transferRegToForm() {
+const regText = plateInput.value.toUpperCase() || "REG MAN";
+const name = document.getElementById('name').value;
+alert("Thanks " + name + "! Your alternative fallback request has been logged for registration: " + regText);
+}
